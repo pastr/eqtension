@@ -1,0 +1,21 @@
+{
+  "name": "eq-extension",
+  "description": "A chrome extension we can adapt to our eq needs",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "ticket-links.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://github.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

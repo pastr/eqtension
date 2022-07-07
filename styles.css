@@ -1,0 +1,73 @@
+:root {
+  --color-primary: #0076DE;
+  --color-primary-hover: #0966b7;
+
+  --spacing-xs: 0.1rem;
+  --spacing-sm: 0.3rem;
+  --spacing-md: 0.6rem;
+  --spacing-lg: 1rem;
+
+  --border-radius-md: 5px;
+}
+
+body {
+  width: 13rem;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+}
+
+.logo {
+  width: 1.2rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.menu + .menu {
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #ccc;
+}
+
+.menu-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.input-button-combo {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.input {
+  padding:  var(--spacing-sm);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--border-radius-md);
+}
+
+.btn-primary {
+  cursor: pointer;
+  padding: var(--spacing-sm) var(--spacing-xs);
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius-md);
+  border: none;
+  transition: background-color 0.2s ease-in;
+  flex-grow: 1;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.jira-ticket-container {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-direction: column;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="popup-content">
+      <div class="menu">
+        <h2 class="menu-title">
+          GitHub Helpers 
+          <img class="logo" src="./images/GitHub-Mark-32px.png" alt="Github logo">
+        </h2>
+        <button id="open-comments" class="btn-primary">Open all visible comments</button>
+        <button id="load-more-comments" class="btn-primary">Load and open all comments</button>
+      </div>
+
+      <div class="menu">
+        <h2 class="menu-title">
+          Jira Helpers 
+          <img class="logo" src="./images/mark-gradient-blue-jira.png" alt="Github logo">
+        </h2>
+        <div class="jira-ticket-container">
+          <input name="jira-ticket-input" id="jira-ticket-input" class="input" placeholder="ticket prefix">
+          <!-- <div class="input-button-combo"> -->
+          <input type="number" name="jira-ticket-input" id="jira-ticket-input" class="input" placeholder="ticket number">
+          <!-- </div> -->
+          <button id="open-jira-ticket" class="btn-primary">Open ticket</button>
+        </div>
+      </div>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
