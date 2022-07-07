@@ -7,7 +7,7 @@ const jiraTicketPrefixInput = document.getElementById("jira-ticket-prefix");
 let jiraTicketPrefix = "";
 
 chrome.storage.sync.get(['jiraTicketPrefix'], function(result) {
-  jiraTicketPrefixInput.value = result.jiraTicketPrefix;
+  jiraTicketPrefixInput.value = result.jiraTicketPrefix === undefined ? "" : result.jiraTicketPrefix;
   jiraTicketPrefix = result.jiraTicketPrefix;
 });
 
