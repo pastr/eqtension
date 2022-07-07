@@ -15,3 +15,6 @@
 5) The app is now installed, you can pin it so it's easier to access it
 
 ![Pin the extension](./images/install-3.png)
+
+## Demo
+https://share.cleanshot.com/3u9tilkhCgwtOZqy2kyl 
