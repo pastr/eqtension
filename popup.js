@@ -39,6 +39,13 @@ jiraTicketPrefixInput.addEventListener("input", (e) => {
   chrome.storage.sync.set({ jiraTicketPrefix });
 });
 
+jiraTicketInput.addEventListener("keydown", (e) => {
+  console.log('e', e);
+  if (e.key === "Enter") {
+    openJiraTicket();
+  }
+});
+
 
 // functions
 
