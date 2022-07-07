@@ -5,11 +5,15 @@ const jiraTicketPrefixInput = document.getElementById("jira-ticket-prefix");
 const jiraTicketInput = document.getElementById("jira-ticket-input");
 
 let jiraTicketPrefix = "";
-jiraTicketInput.focus();
 
 chrome.storage.sync.get(['jiraTicketPrefix'], function(result) {
-  jiraTicketPrefixInput.value = result.jiraTicketPrefix === undefined ? "" : result.jiraTicketPrefix;
-  jiraTicketPrefix = result.jiraTicketPrefix;
+  if (result.jiraTicketPrefix) {
+    jiraTicketPrefixInput.value = result.jiraTicketPrefix;
+    jiraTicketPrefix = result.jiraTicketPrefix;
+    jiraTicketInput.focus();
+  } else {
+    jiraTicketPrefixInput.focus();
+  }
 });
 
 openGithubCommentButton.addEventListener("click", async () => {
