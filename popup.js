@@ -1,7 +1,7 @@
 const openGithubCommentButton = document.getElementById("open-comments");
 const loadMoreCommentsButton = document.getElementById("load-more-comments");
 const openJiraTicketButton = document.getElementById("open-jira-ticket");
-const JiraTicketInput = document.getElementById("jira-ticket-input");
+const jiraTicketInput = document.getElementById("jira-ticket-input");
 const jiraTicketPrefixInput = document.getElementById("jira-ticket-prefix");
 
 let jiraTicketPrefix = "";
@@ -63,11 +63,10 @@ function loadMoreComments() {
 }
 
 function openJiraTicket() {
-  console.log("opening jira ticket...");
-  const ticketNb = JiraTicketInput.value;
+  const ticketNb = jiraTicketInput.value;
   const fullTicket = `${jiraTicketPrefix}-${ticketNb}`;
-  console.log('🚀 ~ openJiraTicket ~ ticketNb', ticketNb);
   const jiraTicketRegex = /[A-Z]{2,}-\d+/g;
   const jiraUrl = "https://edgelab.atlassian.net/browse/";
+
   window.open(`${jiraUrl}${fullTicket}`, '_blank');
 }

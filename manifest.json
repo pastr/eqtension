@@ -6,9 +6,6 @@
   "background": {
     "service_worker": "ticket-links.js"
   },
-  "default_icon": {
-    "16": "images/Evooq.png"
-  },
   "icons": {
     "16": "images/Evooq.png"
   },
