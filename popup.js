@@ -1,10 +1,11 @@
 const openGithubCommentButton = document.getElementById("open-comments");
 const loadMoreCommentsButton = document.getElementById("load-more-comments");
 const openJiraTicketButton = document.getElementById("open-jira-ticket");
-const jiraTicketInput = document.getElementById("jira-ticket-input");
 const jiraTicketPrefixInput = document.getElementById("jira-ticket-prefix");
+const jiraTicketInput = document.getElementById("jira-ticket-input");
 
 let jiraTicketPrefix = "";
+jiraTicketInput.focus();
 
 chrome.storage.sync.get(['jiraTicketPrefix'], function(result) {
   jiraTicketPrefixInput.value = result.jiraTicketPrefix === undefined ? "" : result.jiraTicketPrefix;
