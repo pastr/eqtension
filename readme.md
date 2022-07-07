@@ -16,5 +16,10 @@
 
 ![Pin the extension](./images/install-3.png)
 
+## Extra
+
+You can set a shortcut to open the extension:
+![Create an extension shortcut](./images/install-4.png)
+
 ## Demo
 https://share.cleanshot.com/3u9tilkhCgwtOZqy2kyl 
