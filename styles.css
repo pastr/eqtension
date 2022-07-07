@@ -40,11 +40,6 @@ body {
   margin: 0;
 }
 
-.input-button-combo {
-  display: flex;
-  gap: var(--spacing-md);
-}
-
 .input {
   padding:  var(--spacing-sm);
   border: 1px solid var(--color-primary);
