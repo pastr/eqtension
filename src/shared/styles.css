@@ -1,0 +1,11 @@
+:root {
+  --color-primary: #0076DE;
+  --color-primary-hover: #0966b7;
+
+  --spacing-xs: 0.1rem;
+  --spacing-sm: 0.3rem;
+  --spacing-md: 0.6rem;
+  --spacing-lg: 1rem;
+
+  --border-radius-md: 5px;
+}
