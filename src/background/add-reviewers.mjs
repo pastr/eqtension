@@ -51,25 +51,9 @@ function requestToAddReviewers() {
     reviewersParent.insertBefore(benzeneReviewersButtonContainer, reviewers);
     reviewersParent.insertBefore(menuTitle, benzeneReviewersButtonContainer);
 
-    const benzeneGrp = 5146712;
-    const Neevalt = 37702867;
-    const rmencattini = 48673773;
-    const lbevo = 104770958;
-    const Luvooda = 102238515;
-    const AdrianAbramczyk = 72611719;
-    const Svreber = 2393978;
-    const haxos = 28428558;
-    const burgyl = 29167147;
-    const pastr = 6838136;
-
-    const benzeneUsers = [Neevalt, rmencattini, lbevo, Luvooda, AdrianAbramczyk, Svreber, haxos, burgyl, pastr];
-
     const formData = new FormData();
     formData.set('authenticity_token', authenticity_token);
     formData.set('dummy-field-just-to-avoid-empty-submit', "foo");
-    benzeneUsers.forEach(user => {
-      formData.append('reviewer_user_ids[]', user);
-    });
 
     const headers = new Headers();
     headers.append("accept", "text/html");
@@ -89,27 +73,21 @@ function requestToAddReviewers() {
     addBenzeneReviewersButton.addEventListener("click", (event) => {
       event.stopPropagation();
       event.preventDefault();
-      chrome.storage.sync.get('users', (data) => {
-        console.log('🚀 ~ chrome.storage.sync.get ~ data', data);
-      });
+      chrome.storage.sync.get('users', ({ users }) => {
+        Object.values(users).forEach(user => {
+          formData.append('reviewer_user_ids[]', user);
+        });
 
-      console.log("formData", formData);
-      formData.forEach((key, value) => {
-        console.log(key, value);
+        fetch(`${prUrl}/review-requests`, {
+          "headers": headers,
+          "referrer": prUrl,
+          "referrerPolicy": "strict-origin-when-cross-origin",
+          body: formData,
+          "method": "POST",
+          "mode": "cors",
+          "credentials": "include"
+        });
       });
-
-      fetch(`${prUrl}/review-requests`, {
-        "headers": headers,
-        "referrer": prUrl,
-        "referrerPolicy": "strict-origin-when-cross-origin",
-        body: formData,
-        "method": "POST",
-        "mode": "cors",
-        "credentials": "include"
-      }).then(res => {
-        console.log(res);
-      });
-
     });
   }
 }
