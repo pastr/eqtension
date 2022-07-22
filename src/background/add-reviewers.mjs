@@ -7,31 +7,49 @@ chrome.tabs.onUpdated.addListener(async () => {
   });
 });
 
+chrome.tabs.onActivated.addListener(async () => {
+  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    function: requestToAddReviewers,
+  });
+});
+
+
 // It should work but probably needs improvements
 function requestToAddReviewers() {
+  console.log('requestToAddReviewers');
+
   const authenticity_token = document.querySelector("#partial-discussion-sidebar > div.discussion-sidebar-item.sidebar-assignee.js-discussion-sidebar-item.position-relative > form > input[type=hidden]").value;
-  const menu = document.querySelector(".select-menu-divider.js-divider-suggestions");
+  const reviewersParent = document.querySelector("[data-reviewers-team-size-check-url]");
+  const reviewers = document.querySelector("#reviewers-select-menu");
+  const addReviewersButton = document.querySelector("[data-inserted");
   const githubOrganization = window.location.pathname.split("/")[1];
   const githubRepo = window.location.pathname.split("/")[2];
   const githubPrNumber = window.location.pathname.split("/")[4];
   const prUrl = `https://github.com/${githubOrganization}/${githubRepo}/pull/${githubPrNumber}`;
 
-  console.log("window.location.pathname", window.location.pathname);
-
-  if (menu.childElementCount === 0) {
+  if (!addReviewersButton) {
     const addBenzeneReviewersButton = document.createElement("button");
     const benzeneReviewersButtonContainer = document.createElement("div");
+    const menuTitle = document.createElement("div");
+
+    menuTitle.classList.add("text-bold");
+    menuTitle.innerText = "Eqtension";
 
     benzeneReviewersButtonContainer.style.display = "flex";
     benzeneReviewersButtonContainer.style.justifyContent = "center";
     benzeneReviewersButtonContainer.style.marginTop = '12px';
     benzeneReviewersButtonContainer.style.marginBottom = '12px';
+    benzeneReviewersButtonContainer.dataset.inserted = "true";
 
-    addBenzeneReviewersButton.innerText = "Add Benzene Reviewers";
-    addBenzeneReviewersButton.classList.add("btn", "btn-primary");
+    addBenzeneReviewersButton.innerText = "Add custom Reviewers";
+    addBenzeneReviewersButton.classList.add("btn", "btn-outline", "btn-sm");
 
     benzeneReviewersButtonContainer.appendChild(addBenzeneReviewersButton);
-    menu.appendChild(benzeneReviewersButtonContainer);
+    reviewersParent.insertBefore(benzeneReviewersButtonContainer, reviewers);
+    reviewersParent.insertBefore(menuTitle, benzeneReviewersButtonContainer);
 
     const benzeneGrp = 5146712;
     const Neevalt = 37702867;
@@ -71,6 +89,10 @@ function requestToAddReviewers() {
     addBenzeneReviewersButton.addEventListener("click", (event) => {
       event.stopPropagation();
       event.preventDefault();
+      chrome.storage.sync.get('users', (data) => {
+        console.log('🚀 ~ chrome.storage.sync.get ~ data', data);
+      });
+
       console.log("formData", formData);
       formData.forEach((key, value) => {
         console.log(key, value);
