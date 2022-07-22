@@ -7,24 +7,23 @@
 </head>
 <body>
 
-<main class="screen-container">
-  Favorite color:
-  <select id="color">
-   <option value="red">red</option>
-   <option value="green">green</option>
-   <option value="blue">blue</option>
-   <option value="yellow">yellow</option>
-  </select>
-  
-  <label>
-    <input type="checkbox" id="like">
-    I like colors.
-  </label>
-  
-  <div id="status"></div>
-  <button id="save">Save</button>
+<main class="page-container">
+  <div class="page-title">Eqtension's options</div>
+  <section class="app-section">
+    <h1 class="app-title">GitHub</>
+    <div class="app-option-container">
+      <h2 class="app-option-title">GitHub username to add as reviewers</h2>
+      <div class="input-container">
+        <input id="github-username" type="text" placeholder="github username">
+        <button id="add-github-reviewers">Add</button>
+      </div>
+      <div class="selected-github-user">
+      </div>
+
+    </div>
+  </section>
 </main>
 
-<script src="options.js"></script>
+<script type="module" src="options.mjs"></script>
 </body>
 </html>

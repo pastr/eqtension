@@ -2,6 +2,9 @@
   --color-primary: #0076DE;
   --color-primary-hover: #0966b7;
 
+  --font-size-lg: 1.7rem;
+  --font-weight-bold: 700;
+
   --spacing-xs: 0.1rem;
   --spacing-sm: 0.3rem;
   --spacing-md: 0.6rem;
